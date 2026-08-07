@@ -34,7 +34,7 @@ const heroSlides = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&q=80&w=1920",
+      "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     heading: "Devotional God Frames with LED",
     subheading:
       "Premium backlit god photo frames with velvet mounts for homes and offices.",
