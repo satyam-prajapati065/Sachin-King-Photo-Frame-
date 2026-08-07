@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { Phone, MessageCircle, Menu, X, Frame, Shield, Sparkles, UserCheck } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Phone,
+  MessageCircle,
+  Menu,
+  X,
+  Frame,
+  Shield,
+  Sparkles,
+  UserCheck,
+} from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,26 +19,27 @@ export default function Navbar() {
   const location = useLocation();
   const { isAuthenticated, logout } = useAuth();
 
-  const phoneNumber = '+91 7052668517';
-  const whatsappUrl = 'https://wa.me/917052668517?text=Hello%20Sachin%20King%20Photo%20Frame,%20I%20have%20an%20inquiry.';
+  const phoneNumber = "+91 7052668517";
+  const whatsappUrl =
+    "https://wa.me/917052668517?text=Hello%20Sachin%20King%20Photo%20Frame,%20I%20have%20an%20inquiry.";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -39,12 +49,12 @@ export default function Navbar() {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Reviews', path: '/testimonials' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Reviews", path: "/testimonials" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -56,34 +66,49 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-2 text-left">
           <div className="flex items-center gap-2 font-medium">
             <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-            <span>"Ek Hi Chhat Ke Neeche Photo Framing Ki Sabhi Suvidhayein"</span>
+            <span>
+              "Ek Hi Chhat Ke Neeche Photo Framing Ki Sabhi Suvidhayein"
+            </span>
           </div>
           <div className="flex items-center gap-4 text-amber-100 shrink-0">
-            <a href={`tel:${phoneNumber}`} className="hover:text-amber-300 transition-colors flex items-center gap-1">
+            <a
+              href={`tel:${phoneNumber}`}
+              className="hover:text-amber-300 transition-colors flex items-center gap-1"
+            >
               <Phone className="w-3 h-3 text-amber-400" /> {phoneNumber}
             </a>
             <span className="text-amber-500/40">|</span>
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-              <MessageCircle className="w-3 h-3 text-emerald-400" /> WhatsApp Now
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+            >
+              <MessageCircle className="w-3 h-3 text-emerald-400" /> WhatsApp
+              Now
             </a>
           </div>
         </div>
       </div>
 
       {/* Main Sticky Navbar */}
-      <header className={`sticky top-0 z-40 transition-all duration-300 relative ${
-        isScrolled 
-          ? 'bg-[#121218]/95 backdrop-blur-md shadow-2xl border-b border-amber-500/30 py-2.5 sm:py-3' 
-          : 'bg-[#121218]/80 backdrop-blur-sm border-b border-amber-500/10 py-3 sm:py-4'
-      }`}>
+      <header
+        className={`sticky top-0 z-40 transition-all duration-300 relative ${
+          isScrolled
+            ? "bg-[#121218]/95 backdrop-blur-md shadow-2xl border-b border-amber-500/30 py-2.5 sm:py-3"
+            : "bg-[#121218]/80 backdrop-blur-sm border-b border-amber-500/10 py-3 sm:py-4"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
-          
           {/* Business Logo & Name (Left) */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <Link
+            to="/"
+            className="flex items-center gap-2 sm:gap-3 group shrink-0"
+          >
             <img
               src="/logo.svg"
               alt="Sachin King Photo Frame Logo"
-              className="w-9 h-9 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]"
+              className="w-12 h-12 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]"
               referrerPolicy="no-referrer"
             />
             <div>
@@ -104,8 +129,8 @@ export default function Navbar() {
                 to={link.path}
                 className={`px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-medium transition-all duration-200 ${
                   isActive(link.path)
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                    : 'text-amber-200/80 hover:text-amber-200 hover:bg-amber-500/10'
+                    ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm"
+                    : "text-amber-200/80 hover:text-amber-200 hover:bg-amber-500/10"
                 }`}
               >
                 {link.name}
@@ -121,7 +146,8 @@ export default function Navbar() {
                   to="/admin"
                   className="flex items-center gap-1 text-[11px] sm:text-xs font-semibold px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition-colors"
                 >
-                  <UserCheck className="w-3.5 h-3.5" /> <span className="hidden xs:inline">Dashboard</span>
+                  <UserCheck className="w-3.5 h-3.5" />{" "}
+                  <span className="hidden xs:inline">Dashboard</span>
                 </Link>
                 <button
                   onClick={logout}
@@ -136,7 +162,9 @@ export default function Navbar() {
               href={`tel:${phoneNumber}`}
               className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-[10px] sm:text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-md gold-glow whitespace-nowrap"
             >
-              <Phone className="w-3.5 h-3.5 fill-slate-950" /> <span className="hidden xs:inline">Call Now</span><span className="xs:hidden">Call</span>
+              <Phone className="w-3.5 h-3.5 fill-slate-950" />{" "}
+              <span className="hidden xs:inline">Call Now</span>
+              <span className="xs:hidden">Call</span>
             </a>
 
             {/* Mobile Menu Button */}
@@ -145,7 +173,11 @@ export default function Navbar() {
               className="lg:hidden p-1.5 sm:p-2 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-300 hover:bg-amber-900/50 transition-colors"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {isOpen ? (
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              ) : (
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -155,7 +187,7 @@ export default function Navbar() {
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden absolute top-full left-0 right-0 z-50 bg-[#121218]/98 border-b border-amber-500/30 backdrop-blur-xl shadow-2xl max-h-[85vh] overflow-y-auto"
             >
@@ -167,8 +199,8 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className={`block px-4 py-2.5 rounded-xl text-sm sm:text-base font-medium transition-all ${
                       isActive(link.path)
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                        : 'text-amber-100/90 hover:bg-amber-500/10'
+                        ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                        : "text-amber-100/90 hover:bg-amber-500/10"
                     }`}
                   >
                     {link.name}
@@ -180,16 +212,18 @@ export default function Navbar() {
                     href={`tel:${phoneNumber}`}
                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs sm:text-sm uppercase tracking-wider"
                   >
-                    <Phone className="w-4 h-4 fill-slate-950" /> Call +91 7052668517
+                    <Phone className="w-4 h-4 fill-slate-950" /> Call +91
+                    7052668517
                   </a>
-                  
+
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm uppercase tracking-wider"
                   >
-                    <MessageCircle className="w-4 h-4 fill-white" /> WhatsApp Chat
+                    <MessageCircle className="w-4 h-4 fill-white" /> WhatsApp
+                    Chat
                   </a>
 
                   {isAuthenticated && (
@@ -202,7 +236,10 @@ export default function Navbar() {
                         Admin Dashboard
                       </Link>
                       <button
-                        onClick={() => { logout(); setIsOpen(false); }}
+                        onClick={() => {
+                          logout();
+                          setIsOpen(false);
+                        }}
                         className="px-4 py-2.5 rounded-xl bg-red-500/20 text-red-300 text-xs sm:text-sm font-semibold border border-red-500/40"
                       >
                         Logout
